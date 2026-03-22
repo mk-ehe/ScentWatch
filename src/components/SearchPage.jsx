@@ -4,7 +4,6 @@ import axios from 'axios';
 import FragranticaCard from './FragranticaCard';
 import PerfumehubCard from './PerfumehubCard';
 
-
 function SearchPage() {
   const [url, setUrl] = useState('');
   const [data, setData] = useState(null);

@@ -1,6 +1,5 @@
 import { Bell } from 'lucide-react';
 
-
 const PerfumehubCard = ({ data }) => {
   if (!data) return null;
 

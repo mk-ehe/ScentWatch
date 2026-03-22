@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import SearchPage from './components/SearchPage';
 import AlertsPage from './components/AlertsPage';
 
-
 function App() {
   return(
 
