@@ -23,3 +23,22 @@ background-image: linear-gradient(
   background-size: 200% 100%;
   animation: flow-gradient 5s linear infinite;
 }
+
+
+.animate-text-flow {
+  background-image: linear-gradient(
+    90deg, 
+    var(--color-blue-600), 
+    var(--color-purple-600), 
+    var(--color-blue-600), 
+    var(--color-purple-600), 
+    var(--color-blue-600)
+  );
+  background-size: 200% 100%;
+  animation: flow-gradient 3s linear infinite;
+
+  -webkit-background-clip: text; 
+  background-clip: text;
+  color: transparent;            
+  display: inline-block;         
+}

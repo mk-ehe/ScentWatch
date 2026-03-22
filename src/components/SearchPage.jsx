@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Search, Loader2 } from 'lucide-react';
 import axios from 'axios';
+import FragranticaCard from './FragranticaCard';
+import PerfumehubCard from './PerfumehubCard';
+
 
 function SearchPage() {
   const [url, setUrl] = useState('');
@@ -45,11 +48,11 @@ function SearchPage() {
   };
 
 return (
-    <div className="flex flex-col items-center justify-start min-h-screen pt-32 px-4 transition-all">
+    <div className="flex flex-col items-center justify-start min-h-screen pt-8 px-4 transition-all">
       
-      <div className="text-center mb-10">
+      <div className="text-center mb-6">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tighter">
-          Znajdź swoje <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-purple-600">perfumy</span>
+          Znajdź swoje <span className="text-transparent bg-clip-text animate-bg-flow">perfumy</span>
         </h1>
         <p className="text-gray-500 text-sm md:text-base max-w-lg mx-auto">
           Wklej link z Perfumehub lub Fragrantica, aby przeanalizować nuty i ceny.
@@ -64,7 +67,7 @@ return (
           onChange={(e) => setUrl(e.target.value)} 
           onKeyDown={(e) => e.key === 'Enter' && handleSearch()} 
           placeholder="Wklej link..."
-          className="w-full py-4 pl-6 pr-37 rounded-full border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all text-gray-700 shadow-sm"
+          className="w-full py-4 pl-6 md:pr-37 pr-20 rounded-full border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all text-gray-700 shadow-sm"
         />
         
         <button 
@@ -80,25 +83,21 @@ return (
           <span className="hidden sm:inline">{isLoading ? 'Szukam' : 'Szukaj'}</span>
         </button>
       </div>
-
-      <div className="w-full max-w-2xl min-h-25 flex flex-col items-center">
+      
+      <div className="w-full max-w-4xl min-h-25 flex flex-col items-center">
         {isLoading && (
-            <div className="animate-pulse flex flex-col items-center gap-2">
-                <div className="h-4 w-48 bg-gray-200 rounded"></div>
-                <div className="h-32 w-full max-w-2xl bg-gray-100 rounded-xl"></div>
+            <div className="animate-pulse flex flex-col items-center">
+                <div className="h-12 w-58 bg-gray-200 rounded-t-xl"></div>
+                <div className="h-52 w-full max-w-2xl bg-gray-100 rounded-b-xl"></div>
             </div>
         )}
 
         {data && !isLoading && (
-            <div className="w-full p-6 bg-white rounded-2xl shadow-xl border border-gray-100 animate-in fade-in zoom-in duration-300">
-                <p className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">Wynik</p>
-                <pre className="text-sm text-gray-700 overflow-x-auto whitespace-pre-wrap">
-                    {JSON.stringify(data, null, 2)}
-                </pre>
-            </div>
+          data.price ? (<PerfumehubCard data={data} />) : (<FragranticaCard data={data} />)
         )}
       </div>
     </div>
+
   );
 }
 

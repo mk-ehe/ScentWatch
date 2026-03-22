@@ -1,4 +1,4 @@
-import { Search, Scale, Bell, Mail } from 'lucide-react';
+import { Search, Bell, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
@@ -15,10 +15,6 @@ function Navbar() {
           <Link to="/" className={navBtnStyle}>
             <Search size={20} />
             <span className="hidden md:block">Wyszukaj</span>
-          </Link>
-          <Link to="/porownaj" className={navBtnStyle}>
-            <Scale size={20} />
-            <span className="hidden md:block">Porównaj</span>
           </Link>
           <Link to="/alerty" className={navBtnStyle}>
             <Bell size={20} />
