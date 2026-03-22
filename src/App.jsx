@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar"
 import ContactPage from "./components/ContactPage";
 import Footer from './components/Footer';
 import SearchPage from './components/SearchPage';
+import AlertsPage from './components/AlertsPage';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
       <main className="flex-1">
       <Routes>
         <Route path="/" element={<SearchPage />} />
-        <Route path="/alerty" element={<div className="p-10 text-white">Tu będą alerty</div>} />
+        <Route path="/alerty" element={<AlertsPage />} />
         <Route path="/kontakt" element={<ContactPage />} />
       </Routes>
       </main>
