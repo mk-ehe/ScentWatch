@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { Loader2, CheckCircle, XCircle } from 'lucide-react';
+import { Loader2, X, CheckCircle, XCircle } from 'lucide-react';
 
 function UnsubscribePage() {
   const [searchParams] = useSearchParams();
@@ -42,25 +42,43 @@ function UnsubscribePage() {
         {status === 'loading' && (
           <div className="flex flex-col items-center">
             <Loader2 className="animate-spin text-purple-600 mb-4" size={40} />
-            <h2 className="text-xl font-bold text-gray-900">Processing...</h2>
+            <h2 className="text-xl font-bold text-gray-900">Ładowanie...</h2>
           </div>
         )}
 
         {status === 'success' && (
           <div className="flex flex-col items-center">
             <CheckCircle className="text-green-600 mb-4" size={60} />
-            <h2 className="text-2xl font-black text-gray-900 mb-2">Unsubscribed</h2>
+            <h2 className="text-2xl font-black text-gray-900 mb-2">Subskrypcja anulowana.</h2>
             <p className="text-gray-500 mb-6 text-sm">{message}</p>
-            <Link to="/" className="bg-gray-900 text-white px-6 py-3 rounded-xl font-bold text-sm">Back to Home</Link>
+            <Link to="/" className="bg-gray-900 text-white px-6 py-3 rounded-xl font-bold text-sm">Strona Główna</Link>
           </div>
         )}
+
+        {status === 'invalid' && (
+            <div className="flex flex-col items-center animate-in zoom-in duration-300">
+                <div className="bg-red-100 w-20 h-20 rounded-4xl flex items-center justify-center mb-6">
+                <X className="text-red-600 opacity-80" size={40} />
+                </div>
+                <h2 className="text-2xl font-black text-gray-900 mb-2 tracking-tighter">Brak danych</h2>
+                <p className="text-gray-500 mb-8 text-sm leading-relaxed">
+                Wygląda na to, że link jest niepełny. <br/> Skorzystaj z linku w wiadomości e-mail.
+                </p>
+                <Link 
+                to="/alerty" 
+                className="bg-gray-900 hover:bg-black text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-xl text-sm"
+                >
+                Przejdź do zarządzania
+                </Link>
+            </div>
+            )}
 
         {status === 'error' && (
           <div className="flex flex-col items-center">
             <XCircle className="text-red-600 mb-4" size={60} />
-            <h2 className="text-2xl font-black text-gray-900 mb-2">Error</h2>
+            <h2 className="text-2xl font-black text-gray-900 mb-2">Błąd</h2>
             <p className="text-gray-500 mb-6 text-sm">{message}</p>
-            <Link to="/alerty" className="text-purple-600 font-bold text-sm">Manage alerts manually</Link>
+            <Link to="/alerty" className="text-purple-600 font-bold text-sm">Zarządzaj alertami ręcznie</Link>
           </div>
         )}
       </div>
