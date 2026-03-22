@@ -25,10 +25,10 @@ function UnsubscribePage() {
           url: fragranceUrl,
           token: token
         });
-        setMessage(response.data.message);
+        setMessage('Sukces! Subskrypcja została anulowana, dziękujemy za skorzystanie z usług ScentWatch.' || response.data.message);
         setStatus('success');
       } catch (err) {
-        setMessage(err.response?.data?.detail || 'Error occurred while unsubscribing.');
+        setMessage('Błąd podczas anulowania subskrypcji.' || err.response?.data?.detail);
         setStatus('error');
       }
     };
@@ -68,7 +68,7 @@ function UnsubscribePage() {
                 to="/alerty" 
                 className="bg-gray-900 hover:bg-black text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-xl text-sm"
                 >
-                Przejdź do zarządzania
+                Przejdź do alertów
                 </Link>
             </div>
             )}
