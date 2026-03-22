@@ -17,6 +17,7 @@ function App() {
         <Route path="/" element={<SearchPage />} />
         <Route path="/alerty" element={<AlertsPage />} />
         <Route path="/kontakt" element={<ContactPage />} />
+        <Route path="/wypisz" element={<UnsubscribePage />} />
       </Routes>
       </main>
       <Footer></Footer>
