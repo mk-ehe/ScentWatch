@@ -81,7 +81,7 @@ function AlertsPage() {
   if (!isAuthenticated) {
     return (
       <div className="flex flex-col items-center justify-center mt-20 px-4 transition-all pb-20">
-        <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl max-w-xl w-full border border-gray-100 text-center relative overflow-hidden">
+        <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl max-w-xl w-full border border-gray-100 text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-blue-600 to-purple-600 animate-bg-flow"></div>
           
           {authStatus !== 'success' ? (
