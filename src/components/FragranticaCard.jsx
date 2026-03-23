@@ -2,21 +2,23 @@ const NoteSection = ({ title, notes }) => {
   if (!notes || notes.length === 0) return null;
   return (
     <div className="mb-8 last:mb-0">
-      <h4 className="text-[14px] font-black animate-text-flow uppercase tracking-widest mb-6 mt-6 flex items-center gap-2">
-        <span className="w-8 h-px bg-gray-200"></span>
+      <h4 className="text-[14px] font-black animate-text-flow uppercase tracking-widest mb-8 mt-6 flex items-center justify-center gap-4">
+        <span className="w-12 h-px bg-gray-200"></span>
         {title}
+        <span className="w-12 h-px bg-gray-200"></span>
       </h4>
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5">
+
+      <div className="flex flex-wrap justify-center gap-x-10 gap-y-8">
         {notes.map((note, idx) => (
-          <div key={idx} className="flex flex-col items-center group">
-            <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
+          <div key={idx} className="flex flex-col items-center group w-20">
+            <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-gray-100 shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300 bg-white">
               <img 
                 src={note.image} 
                 alt={note.name} 
                 className="w-full h-full object-cover grayscale-20 group-hover:grayscale-0" 
               />
             </div>
-            <span className="mt-2 text-[12px] leading-tight text-gray-500 font-bold text-center">
+            <span className="mt-3 text-[11px] leading-tight text-gray-500 font-bold text-center">
               {note.name}
             </span>
           </div>
