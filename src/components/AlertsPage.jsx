@@ -22,10 +22,28 @@ function AlertsPage() {
   const isAuthenticated = urlEmail && urlToken;
 
   useEffect(() => {
+    const savedExpiry = localStorage.getItem('scentwatch_cooldown_expiry');
+    if (savedExpiry) {
+      const remaining = Math.ceil((parseInt(savedExpiry) - Date.now()) / 1000);
+      if (remaining > 0) {
+        setCooldown(remaining);
+      } else {
+        localStorage.removeItem('scentwatch_cooldown_expiry');
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     let timer;
     if (cooldown > 0) {
       timer = setInterval(() => {
-        setCooldown((prev) => prev - 1);
+        setCooldown((prev) => {
+          if (prev <= 1) {
+            localStorage.removeItem('scentwatch_cooldown_expiry');
+            return 0;
+          }
+          return prev - 1;
+        });
       }, 1000);
     }
     return () => clearInterval(timer);
@@ -57,12 +75,16 @@ function AlertsPage() {
     setAuthStatus('loading');
     try {
       await axios.post('https://perfumehub-api.onrender.com/request-access', { email: emailInput });
-      setAuthStatus('success');
+      const expiry = Date.now() + 60 * 1000;
+      localStorage.setItem('scentwatch_cooldown_expiry', expiry.toString());
       setCooldown(60);
+      setAuthStatus('success');
     } catch (err) {
       if (err.response?.status === 429) {
+        const expiry = Date.now() + 900 * 1000;
+        localStorage.setItem('scentwatch_cooldown_expiry', expiry.toString());
         setCooldown(900);
-        alert("Przekroczono limit. Spróbuj ponownie później.");
+        alert("Przekroczono limit. Spróbuj ponownie za 15 minut.");
       } else {
         alert("Błąd serwera przy wysyłaniu linku.");
       }
