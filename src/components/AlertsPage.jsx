@@ -17,7 +17,19 @@ function AlertsPage() {
   const [newUrl, setNewUrl] = useState('');
   const [isAdding, setIsAdding] = useState(false);
 
+  const [cooldown, setCooldown] = useState(0);
+
   const isAuthenticated = urlEmail && urlToken;
+
+  useEffect(() => {
+    let timer;
+    if (cooldown > 0) {
+      timer = setInterval(() => {
+        setCooldown((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [cooldown]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -40,12 +52,20 @@ function AlertsPage() {
 
   const handleRequestAccess = async (e) => {
     e.preventDefault();
+    if (cooldown > 0) return;
+
     setAuthStatus('loading');
     try {
       await axios.post('https://perfumehub-api.onrender.com/request-access', { email: emailInput });
       setAuthStatus('success');
+      setCooldown(60);
     } catch (err) {
-      alert("Błąd serwera przy wysyłaniu linku.");
+      if (err.response?.status === 429) {
+        setCooldown(900);
+        alert("Przekroczono limit. Spróbuj ponownie później.");
+      } else {
+        alert("Błąd serwera przy wysyłaniu linku.");
+      }
       setAuthStatus('idle');
     }
   };
@@ -101,14 +121,21 @@ function AlertsPage() {
                   <input 
                     type="email" required placeholder="Twój e-mail..."
                     value={emailInput} onChange={(e) => setEmailInput(e.target.value)}
-                    className="w-full py-4 pl-12 pr-6 rounded-2xl border-2 border-gray-100 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none font-bold text-gray-700 transition-all"
+                    disabled={authStatus === 'loading' || cooldown > 0}
+                    className="w-full py-4 pl-12 pr-6 rounded-2xl border-2 border-gray-100 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none font-bold text-gray-700 transition-all disabled:opacity-50"
                   />
                 </div>
                 <button 
-                  type="submit" disabled={authStatus === 'loading'}
+                  type="submit" disabled={authStatus === 'loading' || cooldown > 0}
                   className="w-full bg-gray-900 hover:bg-black text-white py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-xl active:scale-95 disabled:opacity-50 cursor-pointer flex justify-center"
                 >
-                  {authStatus === 'loading' ? <Loader2 className="animate-spin" size={16} /> : 'Wyślij link dostępu'}
+                  {authStatus === 'loading' ? (
+                    <Loader2 className="animate-spin" size={16} />
+                  ) : cooldown > 0 ? (
+                    `Odczekaj ${cooldown}s`
+                  ) : (
+                    'Wyślij link dostępu'
+                  )}
                 </button>
               </form>
             </>
@@ -119,8 +146,12 @@ function AlertsPage() {
               </div>
               <h2 className="text-3xl font-black text-gray-900 mb-4">Sprawdź pocztę!</h2>
               <p className="text-gray-500 text-s mb-6 leading-relaxed">Wysłano link na:<br/><b className="text-gray-900">{emailInput}</b>.</p>
-              <button onClick={() => setAuthStatus('idle')} className="text-purple-600 hover:cursor-pointer font-bold text-xs uppercase tracking-widest hover:underline">
-                Spróbuj inny e-mail
+              <button 
+                onClick={() => setAuthStatus('idle')} 
+                disabled={cooldown > 0}
+                className="text-purple-600 hover:cursor-pointer font-bold text-xs uppercase tracking-widest hover:underline disabled:opacity-50"
+              >
+                {cooldown > 0 ? `Wyślij ponownie za ${cooldown}s` : 'Spróbuj inny e-mail'}
               </button>
             </div>
           )}
