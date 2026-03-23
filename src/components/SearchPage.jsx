@@ -30,7 +30,7 @@ function SearchPage() {
             setData(response.data);
         } catch (e) {
             console.error(e);
-            alert("Błąd połączenia z serwerem");
+            alert("Błąd połączenia z serwerem!");
         } finally {
             setIsLoading(false);
         }

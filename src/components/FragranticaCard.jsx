@@ -1,31 +1,3 @@
-const NoteSection = ({ title, notes }) => {
-  if (!notes || notes.length === 0) return null;
-  return (
-    <div className="mb-8 last:mb-0">
-      <h4 className="text-[14px] font-black animate-text-flow uppercase tracking-widest mb-6 mt-6 flex items-center gap-2">
-        <span className="w-8 h-px bg-gray-200"></span>
-        {title}
-      </h4>
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5">
-        {notes.map((note, idx) => (
-          <div key={idx} className="flex flex-col items-center group">
-            <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
-              <img 
-                src={note.image} 
-                alt={note.name} 
-                className="w-full h-full object-cover grayscale-20 group-hover:grayscale-0" 
-              />
-            </div>
-            <span className="mt-2 text-[12px] leading-tight text-gray-500 font-bold text-center">
-              {note.name}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const FragranticaCard = ({ data }) => {
   if (!data) return null;
 
@@ -81,9 +53,15 @@ const FragranticaCard = ({ data }) => {
       <div className="px-8 md:px-12 py-8 bg-linear-to-b from-gray-50/50 to-white border-t border-gray-100 text-center">
         <h3 className="text-3xl font-black mb-4 italic">Piramida zapachowa</h3>
         
-        <NoteSection title="Nuty Głowy" notes={notes?.top} />
-        <NoteSection title="Nuty Serca" notes={notes?.heart} />
-        <NoteSection title="Nuty Bazy" notes={notes?.base} />
+        {notes?.linear && notes.linear.length > 0 ? (
+          <NoteSection title="Nuty Zapachowe" notes={notes.linear} />
+        ) : (
+          <>
+            <NoteSection title="Nuty Głowy" notes={notes?.top} />
+            <NoteSection title="Nuty Serca" notes={notes?.heart} />
+            <NoteSection title="Nuty Bazy" notes={notes?.base} />
+          </>
+        )}
       </div>
 
       <footer className="px-8 py-6 bg-white border-t border-gray-100 flex justify-between items-center">
