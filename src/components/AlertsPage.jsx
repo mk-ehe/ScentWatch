@@ -110,7 +110,7 @@ function AlertsPage() {
     if (!newUrl) return;
     setIsAdding(true);
     try {
-      await axios.get(`https://perfumehub-api.onrender.com/subscribe?url=${encodeURIComponent(newUrl)}&email=${urlEmail}&token=${urlToken}`);
+      await axios.get(`https://perfumehub-api.onrender.com/subscribe?url=${encodeURIComponent(newUrl)}&email=${urlEmail}&token=${urlToken}`, {timeout:10000});
       setNewUrl('');
       fetchAlerts();
     } catch (e) {
