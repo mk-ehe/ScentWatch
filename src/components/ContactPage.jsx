@@ -20,7 +20,7 @@ function ContactPage() {
           
           <a 
             href="mailto:kontakt.mateusz.kudas@gmail.com" 
-            className="group flex items-center justify-center gap-3 w-full bg-gray-50 hover:bg-blue-50 text-gray-700 hover:text-blue-700 py-4 px-6 rounded-xl font-bold transition-all border border-gray-100 hover:border-blue-600"
+            className="group flex text-xs md:text-base items-center justify-center gap-3 w-full bg-gray-50 hover:bg-blue-50 text-gray-700 hover:text-blue-700 py-4 px-6 rounded-xl font-bold transition-all border border-gray-100 hover:border-blue-600"
           >
             <Mail size={22} className="text-gray-400 group-hover:text-blue-600 transition-colors" />
             kontakt.mateusz.kudas@gmail.com
@@ -30,7 +30,7 @@ function ContactPage() {
             href="https://github.com/mk-ehe" 
             target="_blank" 
             rel="noreferrer"
-            className="group flex items-center justify-center gap-3 w-full bg-gray-50 hover:bg-purple-50 text-gray-700 hover:text-purple-700 py-4 px-6 rounded-xl font-bold transition-all border border-gray-100 hover:border-purple-600"
+            className="group flex text-xs md:text-base items-center justify-center gap-3 w-full bg-gray-50 hover:bg-purple-50 text-gray-700 hover:text-purple-700 py-4 px-6 rounded-xl font-bold transition-all border border-gray-100 hover:border-purple-600"
           >
             <Github size={22} className="text-gray-400 group-hover:text-purple-600 transition-colors" />
             github.com/mk-ehe
