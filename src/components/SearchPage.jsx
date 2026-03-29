@@ -51,7 +51,7 @@ return (
       
       <div className="text-center mb-6">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tighter">
-          Znajdź swoje <span className="text-transparent bg-clip-text animate-bg-flow">perfumy</span>
+          Znajdź swoje <span className="text-transparent bg-clip-text animate-bg-flow">perfumy!</span>
         </h1>
         <p className="text-gray-500 text-sm md:text-base w-full mx-auto">
           Wklej link z <a href='https://perfumehub.pl' className="font-bold animate-text-flow underline" target="_blank" rel="noopener noreferrer">Perfumehub</a> lub <a href="https://www.fragrantica.pl" className="font-bold animate-text-flow underline" target="_blank" rel="noopener noreferrer">Fragrantica</a>, aby przeanalizować nuty i ceny.
