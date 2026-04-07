@@ -189,7 +189,7 @@ function AlertsPage() {
         <div className="mb-8 bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
           <div>
             <h1 className="text-2xl font-black text-gray-900">Zarządzanie Alertami</h1>
-            <p className="text-sm text-gray-500 font-medium">Zalogowano jako: <span className="text-purple-600 font-bold">{urlEmail}</span></p>
+            <p className="text-sm text-gray-500 font-medium">Zalogowano jako: <span className="animate-text-flow font-bold">{urlEmail}</span></p>
           </div>
           <button onClick={() => window.location.href='/alerty'} className="text-s font-bold text-gray-400 hover:text-red-500 uppercase tracking-widest transition-colors cursor-pointer">
             Wyjdź
