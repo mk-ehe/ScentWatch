@@ -3,19 +3,22 @@ import { Search, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import FragranticaCard from './FragranticaCard';
 import PerfumehubCard from './PerfumehubCard';
+import FragranticaSearchBar from './FragranticaSearchBar'; // <-- DODANY IMPORT
 
 function SearchPage() {
   const [url, setUrl] = useState('');
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSearch = async () => {
-    if (!url.trim()) return;
+  const handleSearch = async (searchUrl) => {
+    const targetUrl = typeof searchUrl === 'string' ? searchUrl : url;
+
+    if (!targetUrl.trim()) return;
     
     setIsLoading(true);
     setData(null);
 
-    const trimmedUrl = url.trim();
+    const trimmedUrl = targetUrl.trim();
     let apiUrl = "";
     
     if (trimmedUrl.includes("perfumehub.")) {
@@ -54,8 +57,12 @@ return (
           Znajdź swoje <span className="text-transparent bg-clip-text animate-bg-flow">perfumy!</span>
         </h1>
         <p className="text-gray-500 text-sm md:text-base w-full mx-auto">
-          Wklej link z <a href='https://perfumehub.pl' className="font-bold animate-text-flow underline" target="_blank" rel="noopener noreferrer">Perfumehub</a> lub <a href="https://www.fragrantica.pl" className="font-bold animate-text-flow underline" target="_blank" rel="noopener noreferrer">Fragrantica</a>, aby przeanalizować nuty i ceny.
+          Znajdź swoje perfumy wpisując ich nazwę poniżej lub wklej link <a href='https://perfumehub.pl' className="font-bold animate-text-flow underline" target="_blank" rel="noopener noreferrer">Perfumehub!</a>
         </p>
+      </div>
+
+      <div className="w-full max-w-2xl relative z-50 mb-6">
+        <FragranticaSearchBar onSelectPerfume={handleSearch} />
       </div>
 
       <div className="w-full max-w-2xl relative flex items-center mb-10">
@@ -64,9 +71,9 @@ return (
           value={url} 
           disabled={isLoading}
           onChange={(e) => setUrl(e.target.value)} 
-          onKeyDown={(e) => e.key === 'Enter' && handleSearch()} 
+          onKeyDown={handleKeyDown} 
           placeholder="Wklej link..."
-          className="w-full py-4 pl-6 md:pr-37 pr-20 rounded-full border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all text-gray-700 shadow-sm"
+          className="w-full py-4 pl-6 md:pr-37 pr-20 rounded-full border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all text-gray-700 shadow-sm bg-white"
         />
         
         <button 
@@ -99,6 +106,5 @@ return (
 
   );
 }
-
 
 export default SearchPage;
