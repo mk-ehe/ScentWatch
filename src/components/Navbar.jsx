@@ -5,7 +5,7 @@ function Navbar() {
   const navBtnStyle = "flex font-bold text-[#FFFFFF] tracking-tight gap-1 cursor-pointer hover:text-purple-400 transition-colors items-center text-sm md:text-base";
 
   return (
-    <nav className="w-full p-3 animate-bg-flow sticky top-0 z-50 shadow-md">
+    <nav className="w-full p-3 animate-bg-flow sticky top-0 z-90 shadow-md">
       <div className="flex justify-between items-center w-full mx-auto">
         <Link to="/" className="text-xl md:text-2xl font-bold text-[#FFFFFF] tracking-tight shrink-0">
           ScentWatch
