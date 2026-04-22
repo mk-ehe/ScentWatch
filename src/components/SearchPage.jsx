@@ -66,6 +66,7 @@ return (
       </div>
 
       <div className="w-full max-w-2xl relative flex items-center mb-10">
+        <Search className="absolute left-6 text-gray-400" size={18} />
         <input 
           type="text" 
           value={url} 
@@ -73,7 +74,7 @@ return (
           onChange={(e) => setUrl(e.target.value)} 
           onKeyDown={handleKeyDown} 
           placeholder="Wklej link..."
-          className="w-full py-4 pl-6 md:pr-37 pr-20 rounded-full border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all text-gray-700 shadow-sm bg-white"
+          className="w-full py-4 pl-14 pr-12 rounded-full border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all font-medium text-gray-700 bg-white"
         />
         
         <button 
