@@ -49,7 +49,7 @@ export default function FragranticaSearchBar({ onSelectPerfume }) {
 
   return (
     <div ref={wrapperRef} className="relative w-full">
-      <div className="relative flex items-center shadow-sm rounded-full">
+      <div className="relative flex items-center rounded-full">
         <Search className="absolute left-6 text-gray-400" size={18} />
         <input
           type="text"
