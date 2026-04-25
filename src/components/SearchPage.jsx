@@ -74,7 +74,7 @@ return (
           onChange={(e) => setUrl(e.target.value)} 
           onKeyDown={handleKeyDown} 
           placeholder="Wklej link..."
-          className="w-full py-4 pl-14 pr-12 rounded-full border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all font-medium text-gray-700 bg-white"
+          className="w-full py-4 pl-14 pr-36 rounded-full border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none transition-all font-medium text-gray-700 bg-white"
         />
         
         <button 
