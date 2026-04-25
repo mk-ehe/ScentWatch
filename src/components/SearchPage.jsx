@@ -32,8 +32,16 @@ function SearchPage() {
             const response = await axios.get(apiUrl);
             setData(response.data);
         } catch (e) {
-            console.error(e);
-            alert("Błąd połączenia z serwerem!");
+            if (e.response && e.response.status === 429) {
+              alert("Zbyt wiele rządań! Zwolnij!")
+            }
+            else if (e.response && e.response.status === 404) {
+              alert("Nie znaleziono strony!")
+            }
+            else {
+              alert("Błąd połączenia z serwerem!");
+            }
+            
         } finally {
             setIsLoading(false);
         }
