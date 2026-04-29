@@ -29,7 +29,7 @@ export default function FragranticaSearchBar({ onSelectPerfume }) {
     setIsLoading(true);
     const delayDebounceFn = setTimeout(async () => {
       try {
-        const res = await axios.get(`https://perfumehub-api.onrender.com/autocomplete?q=${query}`);
+        const res = await axios.get(`https://fragrantica-api.vercel.app/autocomplete?q=${query}`);
         setResults(res.data.results);
       } catch (e) {
         console.error("Błąd wyszukiwania", e);
