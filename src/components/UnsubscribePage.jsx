@@ -20,7 +20,7 @@ function UnsubscribePage() {
 
     const unsubscribe = async () => {
       try {
-        const response = await axios.post('https://perfumehub-api.onrender.com/unsubscribe', {
+        const response = await axios.post('https://fragrantica-api.vercel.app/unsubscribe', {
           email: email,
           url: fragranceUrl,
           token: token
