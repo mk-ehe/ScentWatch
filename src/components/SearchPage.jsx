@@ -3,7 +3,7 @@ import { Search, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import FragranticaCard from './FragranticaCard';
 import PerfumehubCard from './PerfumehubCard';
-import FragranticaSearchBar from './FragranticaSearchBar'; // <-- DODANY IMPORT
+import FragranticaSearchBar from './FragranticaSearchBar';
 
 function SearchPage() {
   const [url, setUrl] = useState('');
@@ -101,10 +101,13 @@ return (
       
       <div className="w-full max-w-4xl min-h-25 flex flex-col items-center">
         {isLoading && (
-            <div className="animate-pulse flex flex-col items-center">
-                <div className="h-12 w-58 bg-gray-200 rounded-t-xl"></div>
-                <div className="h-52 w-full max-w-2xl bg-gray-100 rounded-b-xl"></div>
-            </div>
+          <div className="animate-pulse flex flex-col items-center w-full">
+            {/* Górna część - zwiększyłem wysokość (h-16 zamiast h-12) i szerokość (w-72 zamiast w-58) */}
+            <div className="h-36 w-full max-w-4xl bg-gray-200 rounded-t-xl"></div>
+            
+            {/* Dolna część - znacznie zwiększyłem wysokość (h-96 zamiast h-52) i maksymalną szerokość (max-w-4xl zamiast max-w-2xl) */}
+            <div className="h-96 w-full max-w-4xl bg-gray-100 rounded-b-xl"></div>
+          </div>
         )}
 
         {data && !isLoading && (
