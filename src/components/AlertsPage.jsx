@@ -105,12 +105,17 @@ function AlertsPage() {
     }
   };
 
-  const handleAddNewAlert = async (e) => {
+ const handleAddNewAlert = async (e) => {
     e.preventDefault();
     if (!newUrl) return;
     setIsAdding(true);
     try {
-      await axios.get(`https://perfumehub-api.onrender.com/subscribe?url=${encodeURIComponent(newUrl)}&email=${urlEmail}&token=${urlToken}`, {timeout:10000});
+      await axios.post('https://perfumehub-api.onrender.com/subscribe', {
+        url: newUrl,
+        email: urlEmail,
+        token: urlToken
+      }, { timeout: 10000 });
+      
       setNewUrl('');
       fetchAlerts();
     } catch (e) {
