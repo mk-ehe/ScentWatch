@@ -38,6 +38,9 @@ function SearchPage() {
             else if (e.response && e.response.status === 404) {
               alert("Nie znaleziono strony!")
             }
+            else if (e.response && e.response.status === 400) {
+              alert("Coś poszło nie tak, sprawdź ponownie link!")
+            }
             else {
               alert("Błąd połączenia z serwerem!");
             }
