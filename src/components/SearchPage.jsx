@@ -61,7 +61,7 @@ function SearchPage() {
   };
 
 return (
-    <div className="flex flex-col items-center justify-start min-h-screen pt-8 px-4 transition-all">
+    <div className="flex flex-col items-center justify-start pt-8 px-4 transition-all">
       
       <div className="text-center mb-6">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tighter">

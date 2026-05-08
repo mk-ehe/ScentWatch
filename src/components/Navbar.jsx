@@ -22,7 +22,7 @@ function Navbar() {
           </Link>
           <Link to="/kontakt" className={navBtnStyle}>
             <Mail size={20} />
-            <span className="hidden md:block">Kontakt</span>
+            <span className="hidden md:block pr-3">Kontakt</span>
           </Link>
         </div>
       </div>
