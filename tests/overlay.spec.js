@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Navbar & Footer Test', () => {
   
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5173/');
+    await page.goto('/');
   });
 
   test('Navbar should display logo and links with proper paths', async ({ page }) => {
@@ -36,12 +36,12 @@ test.describe('Navbar & Footer Test', () => {
 
   test('Proper navbar links redirecting', async ({ page }) => {
     await page.getByRole('link', { name: 'Alerty' }).click();
-    await expect(page).toHaveURL('http://localhost:5173/alerty');
+    await expect(page).toHaveURL('/alerty');
 
     await page.getByRole('link', { name: 'Kontakt' }).click();
-    await expect(page).toHaveURL('http://localhost:5173/kontakt');
+    await expect(page).toHaveURL('/kontakt');
 
     await page.getByRole('link', { name: 'ScentWatch' }).click();
-    await expect(page).toHaveURL('http://localhost:5173/');
+    await expect(page).toHaveURL('/');
   });
 });

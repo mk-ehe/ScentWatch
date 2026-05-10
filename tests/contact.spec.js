@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('ContactPage Test', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5173/kontakt');
+    await page.goto('/kontakt');
   });
 
   test('header and paragraph should be visible', async ({ page }) => {
