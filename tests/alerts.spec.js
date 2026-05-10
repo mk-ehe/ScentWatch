@@ -1,9 +1,6 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Alerts Page Test', () => {
-    test.beforeEach(async ({ page }) => {
-        await page.goto('/alerty');
-    });
 
     test.beforeEach(async ({ page }) => {
         await page.goto('/alerty');
@@ -64,7 +61,7 @@ test.describe('Alerts Page - Dashboard (Authenticated)', () => {
         });
     });
 
-    await page.goto('/alerty?email=test@gmail.com.com&token=fakeToken');
+    await page.goto('/alerty?email=test@gmail.com&token=fake-token');
 
     await expect(page.getByRole('heading', { name: 'Zarządzanie Alertami' })).toBeVisible();
     await expect(page.getByText('test@gmail.com')).toBeVisible();
@@ -82,7 +79,7 @@ test.describe('Alerts Page - Dashboard (Authenticated)', () => {
         });
     });
 
-    await page.goto('/alerty?email=empty.test@gmail.com&token=fakeToken');
+    await page.goto('/alerty?email=empty.test@gmail.com&token=fake-token');
 
     await expect(page.getByText('Nie obserwujesz jeszcze żadnych zapachów.')).toBeVisible();
     await expect(page.getByText('test@gmail.com')).toBeVisible();
