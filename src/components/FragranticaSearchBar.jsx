@@ -82,7 +82,8 @@ export default function FragranticaSearchBar({ onSelectPerfume }) {
             </ul>
           ) : !isLoading ? (
             <div className="px-6 py-8 text-center text-gray-500 font-medium text-sm">
-              Nie znaleziono zapachu: "{query}"
+              Nie znaleziono zapachu: "{query}"?<br />
+              Spróbuj wkleić link ze strony <a href='https://fragrantica.pl' className="font-bold animate-text-flow underline" target="_blank" rel="noopener noreferrer">Fragrantica!</a>
             </div>
           ) : null}
         </div>
