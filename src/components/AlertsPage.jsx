@@ -236,7 +236,7 @@ function AlertsPage() {
                     )}
                   </div>
                   <div className="flex-1 text-center md:text-left">
-                    <h4 className="text-lg font-black text-gray-900 mb-2 leading-tight">{item.fragrance}</h4>
+                    <h4 className="text-lg font-black text-gray-900 mb-2 leading-tight">{item.fragrance} - {item.capacity}</h4>
                     <div className="flex flex-wrap justify-center md:justify-start gap-2">
                         <span className="text-xs font-black text-green-700 bg-green-50 border border-green-100 px-3 py-1.5 rounded-lg">Aktualna: {item.price}</span>
                         {item.low_30d && item.low_30d !== "Brak" && (
