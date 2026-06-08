@@ -3,7 +3,7 @@ import { Bell } from 'lucide-react';
 const PerfumehubCard = ({ data }) => {
   if (!data) return null;
 
-  const { fragrance, concentration, picture, price, low_30d, shop, url } = data;
+  const { fragrance, concentration, capacity, picture, price, low_30d, shop, url } = data;
 
   return (
     <div className="w-full max-w-4xl mb-10 bg-white rounded-[2.5rem] shadow-2xl shadow-blue-500/5 border border-gray-100 overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-700 hover:border-blue-400 transition-colors">
@@ -25,7 +25,7 @@ const PerfumehubCard = ({ data }) => {
             {concentration}
           </p>
           <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-8 leading-[1.2] tracking-tighter">
-            {fragrance}
+            {fragrance} - {capacity}
           </h2>
 
           <div className="bg-gray-50/80 p-6 md:p-8 rounded-3xl border border-gray-100 w-full flex flex-col md:flex-row items-center justify-between gap-6">
