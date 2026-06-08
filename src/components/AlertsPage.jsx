@@ -172,7 +172,7 @@ function AlertsPage() {
                 <CheckCircle className="text-green-600" size={32} />
               </div>
               <h2 className="text-3xl font-black text-gray-900 mb-4">Sprawdź pocztę!</h2>
-              <p className="text-gray-500 text-s mb-6 leading-relaxed">Wysłano link na:<br/><b className="text-gray-900">{emailInput}</b>.</p>
+              <p className="text-gray-500 text-s mb-6 leading-relaxed">Wysłano link na:<br/><b className="text-gray-900">{emailInput}</b></p>
               <button 
                 onClick={() => setAuthStatus('idle')} 
                 disabled={cooldown > 0}
