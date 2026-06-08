@@ -74,26 +74,24 @@ test.describe('Search Page Test', () => {
     });
 
     test('handles invalid link by showing an alert dialog', async ({ page }) => {
-        page.on('dialog', dialog => {
-        expect(dialog.message()).toBe('Błędny link!');
-        dialog.accept();
-        });
+        const dialogPromise = page.waitForEvent('dialog');
 
         await page.getByPlaceholder('Wklej link...').fill('bad-link');
         await page.getByRole('button', { name: 'Szukaj' }).click();
+
+        const dialog = await dialogPromise;
+        expect(dialog.message()).toBe('Błędny link!');
+        await dialog.accept();
     });
 
     test('handles API 404 error by showing an alert dialog', async ({ page }) => {
-        await page.route('**/search?url=*', route => {
-        route.fulfill({ status: 404 });
-        });
-
-        page.on('dialog', dialog => {
-        expect(dialog.message()).toBe('Nie znaleziono strony!');
-        dialog.accept();
-        });
+        const dialogPromise = page.waitForEvent('dialog');
 
         await page.getByPlaceholder('Wklej link...').fill('https://perfumehub.pl/does-not-exists');
         await page.getByRole('button', { name: 'Szukaj' }).click();
+
+        const dialog = await dialogPromise;
+        expect(dialog.message()).toBe('Nie znaleziono strony!');
+        await dialog.accept();
     });
-});
+    });
