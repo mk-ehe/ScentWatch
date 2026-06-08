@@ -96,7 +96,7 @@ test.describe('Search Page Test', () => {
         await page.getByRole('button', { name: 'Szukaj' }).click();
 
         const dialog = await dialogPromise;
-        expect(dialog.message()).toBe('Błąd połączenia z serwerem!');
+        expect(dialog.message()).toBe('Nie znaleziono strony!');
         await dialog.accept();
     });
 });
