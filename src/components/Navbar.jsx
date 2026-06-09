@@ -8,7 +8,7 @@ function Navbar() {
     <nav className="w-full p-3 animate-bg-flow sticky top-0 z-90 shadow-md">
       <div className="flex justify-between items-center w-full mx-auto">
         <Link to="/" className="text-xl md:text-2xl font-bold text-[#FFFFFF] tracking-tight shrink-0">
-          ScentWatch
+          ScentWatch!
         </Link>
       
         <div className="flex gap-4 md:gap-8 items-center">
